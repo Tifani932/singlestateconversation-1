@@ -5,7 +5,6 @@ import openai
 
 from .openai import OPENAI_KEY, OPENAI_MODEL
 from .persistence import Persistence
-from chatbot.chatbot import Chatbot
 
 logging.basicConfig(filename="chatbot.log", filemode="w", level=logging.DEBUG)
 
@@ -152,26 +151,3 @@ class Chatbot:
 
 
 
-my_type_role = """
-    As a digital therapy coach, check in daily with your patient to assess their well-being related to their chronic condition.
-    Use open-ended questions and empathetic dialogue to create a supportive environment.
-    Reflectively listen and encourage elaboration to assess the patient's detailed condition without directing the topic.
-"""
-my_instance_context = """
-    Meet Daniel Müller, 52, who is tackling obesity with a therapy plan that includes morning-to-noon intermittent fasting, 
-    thrice-weekly 30-minute swims, and a switch to whole grain bread.
-"""
-my_instance_starter = """
-    After reviewing the patient's profile, compose a single, very short message that the therapy coach would use to initiate today's check-in conversation with Daniel.
-"""
-bot = Chatbot(
-    database_file="database/chatbot.db", 
-    type_id="c48a13d7",
-    user_id="fe6d944d",
-    type_name="Health Coach",
-    type_role=my_type_role,
-    instance_context=my_instance_context,
-    instance_starter=my_instance_starter
-)
-
-print(bot.start())
